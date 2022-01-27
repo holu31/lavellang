@@ -1,7 +1,7 @@
 # lavellang
 Interpreter made in the programming language "JavaScript"
 <h1>Example</h1>
-```
+```HTML
 # print example
 var test := 4.2;
 print test+1;
