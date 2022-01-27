@@ -1,6 +1,7 @@
 # lavellang
 Interpreter made in the programming language "JavaScript"
-```html<h2>Example of code</h2><pre>
+```HTML
+<h2>Example of code</h2><pre>
 <div class="container">
   <div class="block two first">
     <h2>Example hello world</h2>
