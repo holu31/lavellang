@@ -1,9 +1,7 @@
 # lavellang
 Interpreter made in the programming language "JavaScript"
-```javascript
-# print example
-var test := 4.2;
-print test+1;
-exit;
-print 1+4 #it will not be processed
-```
+<span style="color: gray"># print example</span>
+<span style="color: red">var</span> test := 4.2;
+<span style="color: red">print</span> test+1;
+<span style="color: red">exit</span>;
+<span style="color: red">print</span> 1+4 <span style="color: gray">#it will not be processed</span>
