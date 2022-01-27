@@ -1,6 +1,6 @@
 # lavellang
 Interpreter made in the programming language "JavaScript"
-```PASCAL
+```python
 # print example
 var test := 4.2;
 print test+1;
