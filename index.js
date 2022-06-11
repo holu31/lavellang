@@ -4,7 +4,11 @@ const Lexer = require('./lexer');
 const program = `
 # print example
 var test := 4.2;
-print test+1;
+label test:
+	print -2--3;
+end;
+
+call test;
 exit;
 print 1+4 #it will not be processed`;
 let lexer = new Lexer(program);

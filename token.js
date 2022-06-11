@@ -33,9 +33,25 @@ class Token {
     	return 'MINUS';
   	}
 
+	static get MULTIPLY() {
+		return 'MULTIPLY';
+	}
+
   	static get PRINT() {
     	return 'PRINT';
   	}
+
+	static get LABEL() {
+    	return 'LABEL';
+  	}
+
+	static get END() {
+		return 'END';
+	}
+
+	static get CALL() {
+		return 'CALL';
+	}
 
   	static get COMMENT() {
     	return 'COMMENT';
@@ -68,6 +84,10 @@ class Token {
   	static get SEMI_COLON() {
     	return 'SEMI_COLON';
   	}
+
+	static get COLON() {
+		return 'COLON';
+	}
 
   	static get LEFT_PARENT() {
     	return 'LEFT_PARENT';

@@ -98,6 +98,10 @@ class Lexer {
         		this.advance().advance();
         		return Token.create(Token.ASSIGN, ':=');
       		}
+			if (this.currentChar === ':'){
+				this.advance();
+				return Token.create(Token.COLON, ':');
+			}
 	      	if (this.currentChar === '+') {
 	        	this.advance();
 	        	return Token.create(Token.PLUS, '+');
@@ -106,6 +110,10 @@ class Lexer {
 	        	this.advance();
 	        	return Token.create(Token.MINUS, '-');
 	      	}
+			if (this.currentChar === '*') {
+				this.advance();
+				return Token.create(Token.MULTIPLY, '*');
+			}
 	      	if (this.currentChar === '(') {
 	        	this.advance();
 	        	return Token.create(Token.LEFT_PARENT, '(');
@@ -126,6 +134,9 @@ class Lexer {
  	static get RESERVED_WORDS() {
 	    return {
 	    	print: Token.create(Token.PRINT, 'print'),
+			label: Token.create(Token.LABEL, 'label'),
+			end: Token.create(Token.END, 'end'),
+			call: Token.create(Token.CALL, 'call'),
 	    	var: Token.create(Token.VAR, 'var'),
 	    	exit: Token.create(Token.EXIT, 'exit'),
 	    }
