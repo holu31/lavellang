@@ -70,7 +70,7 @@ class Lexer {
  	identifier() {
     	let identifier = '';
 
-    	while (this.currentChar && /[a-zA-Z0-9]/.test(this.currentChar)) {
+    	while (this.currentChar && /[a-zA-Z0-9]/.test(this.currentChar) || this.currentChar == '_') {
       		identifier += this.currentChar;
       		this.advance();
     	}
@@ -126,7 +126,7 @@ class Lexer {
 	        	this.advance();
 	        	return Token.create(Token.SEMI_COLON, ';');
 	      	}
-	      	return err(`Lavel: unknown token '${this.currentChar}'!`);
+	      	return this.err(`Lavel: unknown token '${this.currentChar}'!`);
 	    }
 	    return Token.create(Token.EOF, null);
  	}
@@ -135,6 +135,8 @@ class Lexer {
 	    return {
 	    	print: Token.create(Token.PRINT, 'print'),
 			label: Token.create(Token.LABEL, 'label'),
+			fn: Token.create(Token.FUNCTION, 'fn'),
+			then: Token.create(Token.THEN, 'then'),
 			end: Token.create(Token.END, 'end'),
 			call: Token.create(Token.CALL, 'call'),
 	    	var: Token.create(Token.VAR, 'var'),

@@ -41,6 +41,14 @@ class Token {
     	return 'PRINT';
   	}
 
+	static get FUNCTION() {
+    	return 'FUNCTION';
+  	}
+
+	static get THEN() {
+    	return 'THEN';
+  	}
+
 	static get LABEL() {
     	return 'LABEL';
   	}

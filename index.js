@@ -2,15 +2,15 @@ const Parser = require('./parser');
 const Lexer = require('./lexer');
 
 const program = `
-# print example
-var test := 4.2;
-label test:
-	print -2--3;
+fn pr_int then
+	print 123;
 end;
 
-call test;
-exit;
-print 1+4 #it will not be processed`;
+pr_int;
+label pr_label:
+	print 123;
+end;
+call pr_label;`;
 let lexer = new Lexer(program);
 console.log("---------- LEXER ----------")
 while(true){
