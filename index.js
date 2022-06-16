@@ -2,11 +2,12 @@ const Parser = require('./parser');
 const Lexer = require('./lexer');
 
 const program = `
-fn pr_int then
-	print 123;
-end;
+fn int_plus int_type int_type then
+	print arg1+1;
+	print arg2-1;
+	end;
 
-pr_int;`;
+int_plus 2 6;   # write 3 and 5 on console`;
 let lexer = new Lexer(program);
 console.log("---------- LEXER ----------")
 while(true){

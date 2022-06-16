@@ -201,15 +201,18 @@ class Parser {
 					let func_name = this.currentToken.getValue();
 					this.currentToken = this.lexer.getNextToken();
 					if(this.currentToken.is(Token.SEMI_COLON)) this.err(`Lavel: no arguments!`);
-					for(let j=0; j<this.functions[func_name][0].length-1; j++){
-						console.log(this.functions[func_name][0]);
+					for(let j=0; j<this.functions[func_name][0].length; j++){
+						if(this.currentToken.is(Token.SEMI_COLON)) this.err(`Lavel: not enough arguments`);
 						if(this.functions[func_name][0][j] === Token.INTEGER_LITERAL){
-							console.log('test');
+							if(!this.currentToken.is(Token.INTEGER_LITERAL)) this.err("Lavel: invalid function key type");
+							this.functions[func_name][1] = `var arg${j+1} := ${this.currentToken.getValue()} ; ${this.functions[func_name][1]}`;
 						} else {
 							console.log(`Lavel: unknown type in the function.`)
 						}
+						this.currentToken = this.lexer.getNextToken();
 					}
-
+					let parser = new Parser(this.functions[func_name][1]);
+					parser.parse();
 				}
 			}
 	  		this.currentToken = this.lexer.getNextToken();
