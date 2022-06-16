@@ -6,11 +6,7 @@ fn pr_int then
 	print 123;
 end;
 
-pr_int;
-label pr_label:
-	print 123;
-end;
-call pr_label;`;
+pr_int;`;
 let lexer = new Lexer(program);
 console.log("---------- LEXER ----------")
 while(true){

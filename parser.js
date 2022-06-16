@@ -156,11 +156,10 @@ class Parser {
 				while(!this.currentToken.is(Token.END)){
 					if(this.currentToken.is(Token.EOF)) this.err(`Lavel: end token missing in label.`);
 					if(this.currentToken.is(Token.FUNCTION)) this.err(`Lavel: function cannot be in function.`);
-					this.functions[func_name][0][1] += this.currentToken.getValue() + ' ';
+					this.functions[func_name][1] += this.currentToken.getValue() + ' ';
 					this.currentToken = this.lexer.getNextToken();
 				}
 				this.currentToken = this.lexer.getNextToken();
-				this.functions[func_name][0][1] = this.functions[func_name][0][1].substring(9); // fix undefinded
 				if(!this.currentToken.is(Token.SEMI_COLON)) this.err(`Lavel: syntax error '${this.currentToken.getValue()}'!`);
 				
 			}
@@ -191,12 +190,26 @@ class Parser {
 	  		}
 			if(this.currentToken.is(Token.IDENTIFIER)){
 				if(!this.functions.hasOwnProperty(this.currentToken.getValue())) this.err(`Lavel: unknown function '${this.currentToken.getValue()}'`);
-				if(this.functions[this.currentToken.getValue()][0][0] == undefined){
+				if(this.functions[this.currentToken.getValue()][0].length == 0){
 					let func_name = this.currentToken.getValue();
 					this.currentToken = this.lexer.getNextToken();
 					if(!this.currentToken.is(Token.SEMI_COLON)) this.err(`Lavel: syntax error '${this.currentToken.getValue()}'!`);
-					let parser = new Parser(this.functions[func_name][0][1]);
+					console.log(this.functions[func_name][1]);
+					let parser = new Parser(this.functions[func_name][1]);
 					parser.parse();
+				} else {
+					let func_name = this.currentToken.getValue();
+					this.currentToken = this.lexer.getNextToken();
+					if(this.currentToken.is(Token.SEMI_COLON)) this.err(`Lavel: no arguments!`);
+					for(let j=0; j<this.functions[func_name][0].length-1; j++){
+						console.log(this.functions[func_name][0]);
+						if(this.functions[func_name][0][j] === Token.INTEGER_LITERAL){
+							console.log('test');
+						} else {
+							console.log(`Lavel: unknown type in the function.`)
+						}
+					}
+
 				}
 			}
 	  		this.currentToken = this.lexer.getNextToken();
